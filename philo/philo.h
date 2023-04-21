@@ -6,7 +6,7 @@
 /*   By: khbouych <khbouych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 14:52:34 by khbouych          #+#    #+#             */
-/*   Updated: 2023/04/20 16:43:48 by khbouych         ###   ########.fr       */
+/*   Updated: 2023/04/21 18:17:49 by khbouych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,16 @@
 typedef struct s_rules
 {
     int nbr_philo;
+    int meals;
     int val_time_to_die;
     int val_time_to_eat;
     int val_time_to_sleep;
     int nbr_times_each_philo_must_eat;
     long start_eating;
     int is_dead;
-    pthread_mutex_t mutex;
+    pthread_mutex_t m_dead;
+    pthread_mutex_t m_eat;
+    pthread_mutex_t m_display;
 }t_philo_rules;
 
 typedef struct s_philo
@@ -52,6 +55,9 @@ t_philo *ft_create_philos(t_philo *ph, t_philo_rules *rules);
 int	ft_atoi(const char *str);
 void ft_create_philo_to_thread(t_philo *ph, t_philo_rules *rules);
 long long ft_get_timestamp_in_ms();
+void *ft_rotine_philos(void *p);
+void ft_free(t_philo **ph,t_philo_rules *rules);
+void ft_my_usleep(long long time, int sleep);
 // lists
 t_philo	*ft_addnew(t_philo_rules *rules);
 t_philo	*ft_addlist(t_philo *philo, t_philo *new);

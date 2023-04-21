@@ -6,7 +6,7 @@
 /*   By: khbouych <khbouych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 17:08:15 by khbouych          #+#    #+#             */
-/*   Updated: 2023/04/20 16:47:34 by khbouych         ###   ########.fr       */
+/*   Updated: 2023/04/21 17:22:15 by khbouych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ int main(int ac , char **ag)
     // if(!arg_philo)
     //     return(printf("Error - in args\n"),0);
     ft_create_philo_to_thread(philo,arg_philo);
+    // ft_free(&philo, arg_philo);
 }
 

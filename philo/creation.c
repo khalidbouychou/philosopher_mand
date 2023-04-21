@@ -6,7 +6,7 @@
 /*   By: khbouych <khbouych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:30:50 by khbouych          #+#    #+#             */
-/*   Updated: 2023/04/20 16:51:38 by khbouych         ###   ########.fr       */
+/*   Updated: 2023/04/21 18:27:59 by khbouych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ t_philo_rules *ft_init_philo_rules(t_philo_rules *arg_philo , char **args)
     arg_philo->val_time_to_die = ft_atoi(args[2]);
     arg_philo->val_time_to_eat = ft_atoi(args[3]);
     arg_philo->val_time_to_sleep = ft_atoi(args[4]);
-    arg_philo->start_eating = ft_get_timestamp_in_ms();
     arg_philo->is_dead = 0;
+    arg_philo->meals = 0;
     return(arg_philo);
 }
 t_philo *ft_create_philos(t_philo *ph, t_philo_rules *rules)
@@ -66,28 +66,36 @@ t_philo *ft_create_philos(t_philo *ph, t_philo_rules *rules)
     return (ph);
 }
 
-void *ft_rotine_philos(void *p)
+
+
+void ft_check_dead_case(t_philo *ph)
 {
-    t_philo *ph;
-    ph = (t_philo *)p;
-    if(ph->id % 2 == 0)
-        usleep(ph->args->val_time_to_eat * 1000);
-    while (!ph->args->is_dead)
+    t_philo *cur;
+    cur = ph;
+    while (1)
     {
-        pthread_mutex_lock(&ph->fork);
-        printf("%lld %d has taken a fork\n",ft_get_timestamp_in_ms() - ph->args->start_eating ,ph->id);
-        pthread_mutex_lock(&ph->next->fork);
-        printf("%lld %d has taken a fork\n",ft_get_timestamp_in_ms() - ph->args->start_eating ,ph->id);
-        printf("%lld %d is eating\n",ft_get_timestamp_in_ms() - ph->args->start_eating,ph->id);
-        usleep(ph->args->val_time_to_eat * 1000);
-        
-        pthread_mutex_unlock(&ph->fork);
-        pthread_mutex_unlock(&ph->next->fork);
-        printf("%lld %d is sleeping\n",ft_get_timestamp_in_ms() - ph->args->start_eating,ph->id);
-        usleep(ph->args->val_time_to_sleep * 1000);
-        printf("%lld %d is thinking\n",ft_get_timestamp_in_ms() - ph->args->start_eating,ph->id);
+        usleep(1000);
+        while (cur)
+        {
+            pthread_mutex_lock(&ph->args->m_eat);
+            if (ft_get_timestamp_in_ms() - cur->last_eat > cur->args->val_time_to_die)
+            {
+                cur->args->is_dead = 1;
+                pthread_mutex_lock(&cur->args->m_display);
+                printf("%lld %d died\n",ft_get_timestamp_in_ms() - cur->args->start_eating , cur->id);
+               return;
+            }
+            else if(cur->args->meals == cur->args->nbr_times_each_philo_must_eat)
+            {
+                cur->args->is_dead = 1;
+                return;
+            }
+            pthread_mutex_unlock(&ph->args->m_eat);
+            cur = cur->next;
+            if(cur == ph)
+                break;
+        }
     }
-    return(NULL);
 }
 void ft_create_philo_to_thread(t_philo *ph, t_philo_rules *rules)
 {
@@ -103,20 +111,26 @@ void ft_create_philo_to_thread(t_philo *ph, t_philo_rules *rules)
             break;
     }
     cur = ph;
+    rules->start_eating = ft_get_timestamp_in_ms();
+    pthread_mutex_init(&rules->m_eat,NULL);
+    pthread_mutex_init(&rules->m_dead,NULL);
+    pthread_mutex_init(&rules->m_display,NULL);
+    // ft_my_usleep(1000);
     while(cur)
     {
+        cur->last_eat = rules->start_eating;
         pthread_create(&cur->thread_id,NULL,ft_rotine_philos,cur);
         cur = cur->next;
         if(cur == ph)
             break;
     }
-    finction
-    while(cur)
-    {
-        pthread_join(cur->thread_id,NULL);
-        cur = cur->next;
-        if(cur == ph)
-            break;
-    }
+    ft_check_dead_case(ph);
+    // while(cur)
+    // {
+    //     pthread_join(cur->thread_id,NULL);
+    //     cur = cur->next;
+    //     if(cur == ph)
+    //         break;
+    // }
 }
 
