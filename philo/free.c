@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine.c                                          :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khbouych <khbouych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/21 16:54:58 by khbouych          #+#    #+#             */
-/*   Updated: 2023/04/22 00:06:46 by khbouych         ###   ########.fr       */
+/*   Created: 2023/04/22 00:05:36 by khbouych          #+#    #+#             */
+/*   Updated: 2023/04/22 00:05:57 by khbouych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void *ft_rotine_philos(void *p)
+void ft_free(t_philo **ph,t_philo_rules *rules)
 {
-    t_philo *ph;
-    ph = (t_philo *)p;
-    if(ph->id % 2 == 0)
-        usleep(ph->args->val_time_to_eat * 1000);
-    while (!ph->args->is_dead)
+    t_philo *next;
+    t_philo *head;
+    int i;
+    head = *ph;
+    i = 1;
+    while (i <= head->args->nbr_philo)
     {
-        ft_eat(ph);
-        ft_slep(ph);
-        ft_think(ph);
+        next = head->next;
+        pthread_mutex_destroy(&head->fork);
+        free(head);
+        head = NULL;
+        if(next)
+            head = next;
+        i++;
     }
-    return(NULL);
+        pthread_mutex_destroy(&rules->m_dead);
 }
