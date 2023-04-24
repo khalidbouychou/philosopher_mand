@@ -6,7 +6,7 @@
 /*   By: khbouych <khbouych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:30:50 by khbouych          #+#    #+#             */
-/*   Updated: 2023/04/22 00:17:08 by khbouych         ###   ########.fr       */
+/*   Updated: 2023/04/24 15:13:24 by khbouych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_philo_rules *ft_init_philo_rules(t_philo_rules *arg_philo , char **args)
     arg_philo->val_time_to_eat = ft_atoi(args[3]);
     arg_philo->val_time_to_sleep = ft_atoi(args[4]);
     arg_philo->is_dead = 0;
-    arg_philo->meals = 0;
+    arg_philo->track = 0;
     return(arg_philo);
 }
 t_philo *ft_create_philos(t_philo *ph, t_philo_rules *rules)

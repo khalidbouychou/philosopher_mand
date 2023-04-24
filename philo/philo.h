@@ -6,7 +6,7 @@
 /*   By: khbouych <khbouych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 14:52:34 by khbouych          #+#    #+#             */
-/*   Updated: 2023/04/22 00:16:54 by khbouych         ###   ########.fr       */
+/*   Updated: 2023/04/24 15:43:38 by khbouych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 typedef struct s_rules
 {
     int nbr_philo;
-    int meals;
+    int track;
     int val_time_to_die;
     int val_time_to_eat;
     int val_time_to_sleep;
@@ -56,7 +56,7 @@ void ft_mutex_init(t_philo_rules *rules);
 long long ft_get_timestamp_in_ms();
 void ft_detach(t_philo *ph);
 /****************************/
-int ft_check_args(char **ar);
+int ft_check(char **ag , int ac);
 void ft_check_dead_case(t_philo *ph);
 t_philo_rules *ft_init_philo_rules(t_philo_rules *arg_philo , char **args);
 t_philo *ft_create_philos(t_philo *ph, t_philo_rules *rules);

@@ -6,7 +6,7 @@
 /*   By: khbouych <khbouych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 17:51:34 by khbouych          #+#    #+#             */
-/*   Updated: 2023/04/20 16:46:43 by khbouych         ###   ########.fr       */
+/*   Updated: 2023/04/24 17:28:19 by khbouych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,33 @@ static void	ft_skipp(int *i, const char *p_str, int *sign)
 int	ft_isdigit(int c)
 {
 	return (c >= '0' && c <= '9');
+}
+int ft_check_number(char *ag)
+{
+	int i;
+	i = 0;
+	while (ag[i])
+	{
+		if(!ft_isdigit(ag[i]) && ag[i] != '+' && ag[i]!= '-')
+			return(0);
+		i++;
+	}
+	return(1);
+}
+int ft_check(char **ag , int ac)
+{
+	int i;
+	i = 1;
+	if (!(atoi(ag[1]) >= 1 && atoi(ag[1]) <= 200) || (ac != 5 && ac != 6))
+       return (0);
+	while (i < ac)
+	{
+		if(!ft_atoi(ag[i]) || ft_atoi(ag[i]) < 1)
+			return(0);
+		if(!ag[i] || !ft_check_number(ag[i++]))
+			return(0);
+	}
+	return(1);
 }
 int	ft_atoi(const char *str)
 {

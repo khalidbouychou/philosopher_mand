@@ -6,7 +6,7 @@
 /*   By: khbouych <khbouych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 00:06:24 by khbouych          #+#    #+#             */
-/*   Updated: 2023/04/22 00:20:19 by khbouych         ###   ########.fr       */
+/*   Updated: 2023/04/24 16:31:59 by khbouych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void ft_my_usleep(long long time, int sleep)
 void ft_output(long long t , t_philo *ph,char *msg)
 {
     pthread_mutex_lock(&ph->args->m_display);
-    printf("%lld %d %s\n",(t - ph->args->start_eating) , ph->id,msg);
+    printf("\t⏰ [%lld]ms\t|  id : [%d] |\t%s\n",(t - ph->args->start_eating) , ph->id,msg);
     pthread_mutex_unlock(&ph->args->m_display);
 }
 void ft_mutex_init(t_philo_rules *rules)
