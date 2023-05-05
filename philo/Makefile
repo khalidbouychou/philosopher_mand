@@ -6,7 +6,7 @@
 #    By: khbouych <khbouych@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/07 18:30:44 by khbouych          #+#    #+#              #
-#    Updated: 2023/04/22 00:18:57 by khbouych         ###   ########.fr        #
+#    Updated: 2023/05/04 18:15:48 by khbouych         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ all:$(NAME)
 $(NAME): $(OBJ)
 	cc  -Wall -Werror -Wextra $(OBJ) -o $(NAME)
 %.o:%.c phlilo.h
-	cc  -Wall -Werror -Wextra -c $< -o $@
+	cc  -Wall -Werror -Wextra   -c $< -o $@
 clean :
 	rm -rf $(OBJ)
 fclean : clean

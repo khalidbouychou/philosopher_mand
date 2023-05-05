@@ -6,7 +6,7 @@
 /*   By: khbouych <khbouych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 00:15:20 by khbouych          #+#    #+#             */
-/*   Updated: 2023/04/24 16:20:35 by khbouych         ###   ########.fr       */
+/*   Updated: 2023/05/05 13:00:50 by khbouych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void ft_check_dead_case(t_philo *ph)
     cur = ph;
     while (1)
     {
-        usleep(1000);
+        ft_my_usleep(ft_get_timestamp_in_ms(),1000);
         while (cur)
         {
             pthread_mutex_lock(&ph->args->m_eat);
@@ -26,19 +26,17 @@ void ft_check_dead_case(t_philo *ph)
             {
                 pthread_mutex_lock(&cur->args->m_dead);
                 cur->args->is_dead = 1;
-                pthread_mutex_unlock(&cur->args->m_dead);
-                ft_output(ft_get_timestamp_in_ms() ,cur," 💀 died 💀");
+                ft_output(ft_get_timestamp_in_ms() ,cur," died");
                 return;
             }
-            pthread_mutex_lock(&cur->args->m_meals);
+            // pthread_mutex_lock(&cur->args->m_meals);
             if(cur->args->track == cur->args->nbr_philo)
             {
                 pthread_mutex_lock(&cur->args->m_dead);
                 cur->args->is_dead = 1;
-                pthread_mutex_unlock(&cur->args->m_dead);
                 return ;
             }
-            pthread_mutex_unlock(&cur->args->m_meals);
+            // pthread_mutex_unlock(&cur->args->m_meals);
             pthread_mutex_unlock(&ph->args->m_eat);
             cur = cur->next;
             if(cur == ph)
