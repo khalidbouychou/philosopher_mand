@@ -6,7 +6,7 @@
 /*   By: khbouych <khbouych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 14:52:34 by khbouych          #+#    #+#             */
-/*   Updated: 2023/05/06 19:41:59 by khbouych         ###   ########.fr       */
+/*   Updated: 2023/05/07 15:08:25 by khbouych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,4 @@ void ft_think(t_philo *ph);
 void *ft_rotine_philos(void *p);
 /********free****************/
 void ft_free(t_philo **ph,t_philo_rules *rules);
-// int ft_check_dead_case(t_philo *ph);
 #endif
