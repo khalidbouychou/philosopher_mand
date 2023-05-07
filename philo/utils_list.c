@@ -6,7 +6,7 @@
 /*   By: khbouych <khbouych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:00:07 by khbouych          #+#    #+#             */
-/*   Updated: 2023/04/21 17:48:37 by khbouych         ###   ########.fr       */
+/*   Updated: 2023/05/06 12:39:23 by khbouych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ t_philo	*ft_addnew(t_philo_rules *rules)
 		return (0);
 	new->args = rules;
 	new->nbr_eat = 0;
+	new->args->is_dead = 0;
+	new->last_eat = 0;
     // pthread_mutex_init(&new->args->m_eat,NULL);
     // pthread_mutex_init(&new->args->mutex,NULL);
     // pthread_mutex_init(&new->args->m_display,NULL);

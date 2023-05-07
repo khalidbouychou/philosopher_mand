@@ -6,7 +6,7 @@
 /*   By: khbouych <khbouych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 00:04:24 by khbouych          #+#    #+#             */
-/*   Updated: 2023/05/04 18:13:02 by khbouych         ###   ########.fr       */
+/*   Updated: 2023/05/07 11:09:11 by khbouych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,12 @@ void ft_eat(t_philo *ph)
     ft_output(ft_get_timestamp_in_ms() ,ph,"has taken a fork");
     ft_output(ft_get_timestamp_in_ms() ,ph,"is eating ");
     ft_my_usleep(ft_get_timestamp_in_ms(),ph->args->val_time_to_eat);
+    
     pthread_mutex_lock(&ph->args->m_eat);
     ph->last_eat =  ft_get_timestamp_in_ms();
-    ph->nbr_eat+=1;
-    if(ph->nbr_eat == ph->args->nbr_times_each_philo_must_eat)
-        ph->args->track += 1 ;
+    ph->nbr_eat +=1;
+    // if(ph->nbr_eat == ph->args->nbr_times_each_philo_must_eat)
+    //     ph->args->track += 1 ;
     pthread_mutex_unlock(&ph->args->m_eat);
     pthread_mutex_unlock(&ph->fork);
     pthread_mutex_unlock(&ph->next->fork);

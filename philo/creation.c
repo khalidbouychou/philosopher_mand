@@ -6,7 +6,7 @@
 /*   By: khbouych <khbouych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:30:50 by khbouych          #+#    #+#             */
-/*   Updated: 2023/04/24 15:13:24 by khbouych         ###   ########.fr       */
+/*   Updated: 2023/05/07 09:51:59 by khbouych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ t_philo *ft_create_philos(t_philo *ph, t_philo_rules *rules)
 }
 void ft_create_philo_to_thread(t_philo *ph, t_philo_rules *rules)
 {
-    int i;
-    int nbr_philo;
+    // int i;
+    // int nbr_philo;
     t_philo *cur;
     cur = ph;
     while (cur)

@@ -6,7 +6,7 @@
 /*   By: khbouych <khbouych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 17:08:15 by khbouych          #+#    #+#             */
-/*   Updated: 2023/05/04 17:57:32 by khbouych         ###   ########.fr       */
+/*   Updated: 2023/05/06 19:42:09 by khbouych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main(int ac , char **ag)
 {
-    t_philo_rules *arg_philo;
+    t_philo_rules *arg_philo = NULL;
     t_philo *philo;
 
     philo = NULL;
@@ -27,6 +27,8 @@ int main(int ac , char **ag)
     // if(!arg_philo)
     //     return(printf("Error - in args\n"),0);
     ft_create_philo_to_thread(philo,arg_philo);
+    // if(!ft_check_dead_case(philo))
+    //     return 0;
     ft_free(&philo, arg_philo);
 }
 

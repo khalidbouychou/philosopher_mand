@@ -6,7 +6,7 @@
 /*   By: khbouych <khbouych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:54:58 by khbouych          #+#    #+#             */
-/*   Updated: 2023/04/24 15:43:20 by khbouych         ###   ########.fr       */
+/*   Updated: 2023/05/06 12:42:52 by khbouych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void *ft_rotine_philos(void *p)
     ph = (t_philo *)p;
     if(ph->id % 2 == 0)
         usleep(ph->args->val_time_to_eat * 1000);
-    while (!ph->args->is_dead)
+    while (1)
     {
         ft_eat(ph);
         ft_slep(ph);

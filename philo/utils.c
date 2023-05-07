@@ -6,7 +6,7 @@
 /*   By: khbouych <khbouych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 00:06:24 by khbouych          #+#    #+#             */
-/*   Updated: 2023/05/04 18:11:07 by khbouych         ###   ########.fr       */
+/*   Updated: 2023/05/07 10:55:17 by khbouych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void ft_my_usleep(long long time, int sleep)
 {
     while(ft_get_timestamp_in_ms() - time < sleep)
-        usleep(1);
+      usleep(500);
 }
 void ft_output(long long t , t_philo *ph,char *msg)
 {

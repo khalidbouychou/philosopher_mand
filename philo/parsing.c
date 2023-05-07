@@ -6,7 +6,7 @@
 /*   By: khbouych <khbouych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 17:51:34 by khbouych          #+#    #+#             */
-/*   Updated: 2023/04/24 17:28:19 by khbouych         ###   ########.fr       */
+/*   Updated: 2023/05/06 11:27:27 by khbouych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,3 @@ int	ft_atoi(const char *str)
 	}
 	return (sign * res);
 }
-
-
-
