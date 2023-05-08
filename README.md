@@ -4,6 +4,8 @@
 
 This projet dependly tremendous of architecture of you computer.
 
+![dining-philosophers-problem-and-solution-in-java](https://user-images.githubusercontent.com/41027645/236892862-80164abb-982e-4cb3-8f6f-ff6b8e034e4a.png)
+
 
 I did that in linux debian
 
