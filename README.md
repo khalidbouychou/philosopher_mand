@@ -1,11 +1,20 @@
 # Hak Sir Te9ra 
 *************************************
 
+# Problem description
 
+The Dining Philosophers problem is a classical example in computer science to illustrate synchronisation issues in concurrent processes. It was originally formulated in 1965 by E. W. Dijkstra as a student exam exercise, and was later reworked in its current form by Tony Hoare:
+
+Nsilent philosophers sit at a round table with bowls of spaghetti. Forks are placed between each pair of adjacent philosophers.
+Each philosopher must alternately think and eat. However, a philosopher can only eat spaghetti when they have both left and right forks. Each fork can be held by only one philosopher and so a philosopher can use the fork only if it is not being used by another philosopher. After an individual philosopher finishes eating, they need to put down both forks so that the forks become available to others. A philosopher can take the fork on their right or the one on their left as they become available, but cannot start eating before getting both forks.
 This projet dependly tremendous of architecture of you computer.
 
-![dining-philosophers-problem-and-solution-in-java](https://user-images.githubusercontent.com/41027645/236892862-80164abb-982e-4cb3-8f6f-ff6b8e034e4a.png)
+![download](https://user-images.githubusercontent.com/41027645/236893864-edfa4e3a-0d98-402b-8b2b-c7a4b560dded.png)
 
+
+# Solution of Dining Philosophers Problem
+
+A solution of the Dining Philosophers Problem is to use a semaphore to represent a chopstick. A chopstick can be picked up by executing a wait operation on the semaphore and released by executing a signal semaphore.
 
 I did that in linux debian
 
