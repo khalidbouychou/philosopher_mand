@@ -6,7 +6,7 @@
 /*   By: khbouych <khbouych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:30:50 by khbouych          #+#    #+#             */
-/*   Updated: 2023/05/08 18:02:50 by khbouych         ###   ########.fr       */
+/*   Updated: 2023/05/17 15:45:00 by khbouych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ t_philo_rules	*ft_init_philo_rules(t_philo_rules *arg_philo, char **args)
 	arg_philo->val_time_to_die = ft_atoi(args[2]);
 	arg_philo->val_time_to_eat = ft_atoi(args[3]);
 	arg_philo->val_time_to_sleep = ft_atoi(args[4]);
-	arg_philo->is_dead = 0;
-	arg_philo->track = 0;
 	return (arg_philo);
 }
 
@@ -69,12 +67,12 @@ void	ft_create_philo_to_thread(t_philo *ph, t_philo_rules *rules)
 	ft_mutex_init(rules);
 	while (cur)
 	{
-		cur->last_eat = rules->start_eating;
+		cur->last_eat = ft_get_timestamp_in_ms();
 		pthread_create(&cur->thread_id, NULL, ft_rotine_philos, cur);
 		cur = cur->next;
 		if (cur == ph)
 			break ;
 	}
 	ft_detach(ph);
-	ft_check_dead_case(ph);
+	// ft_check_dead_case(ph);
 }

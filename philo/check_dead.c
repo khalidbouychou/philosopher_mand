@@ -6,7 +6,7 @@
 /*   By: khbouych <khbouych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 00:15:20 by khbouych          #+#    #+#             */
-/*   Updated: 2023/05/08 18:02:09 by khbouych         ###   ########.fr       */
+/*   Updated: 2023/05/17 15:43:00 by khbouych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,38 +33,33 @@ int	ft_help(t_philo *ph)
 	pthread_mutex_lock(&ph->args->m_eat);
 	if (ft_get_timestamp_in_ms() - ph->last_eat > ph->args->val_time_to_die)
 	{
-		pthread_mutex_lock(&ph->args->m_dead);
-		ph->args->is_dead = 1;
 		ft_output(ft_get_timestamp_in_ms(), ph, " died");
 		return (0);
 	}
 	pthread_mutex_lock(&ph->args->m_meals);
 	if (ft_count_nbr_eat(ph))
-	{
-		pthread_mutex_lock(&ph->args->m_dead);
-		ph->args->is_dead = 1;
 		return (0);
-	}
 	pthread_mutex_unlock(&ph->args->m_meals);
 	pthread_mutex_unlock(&ph->args->m_eat);
 	return (1);
 }
 
-void	ft_check_dead_case(t_philo *ph)
+int	ft_check_dead_case(t_philo *ph)
 {
 	t_philo	*cur;
 
 	cur = ph;
 	while (1)
 	{
-		usleep(500);
 		while (cur)
 		{
+			usleep(300);
 			if (!ft_help(cur))
-				return ;
+				return (0);
 			cur = cur->next;
 			if (cur == ph)
 				break ;
 		}
 	}
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: khbouych <khbouych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 00:04:24 by khbouych          #+#    #+#             */
-/*   Updated: 2023/05/08 18:10:53 by khbouych         ###   ########.fr       */
+/*   Updated: 2023/05/17 11:57:05 by khbouych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	ft_slep(t_philo *ph)
 {
 	ft_output(ft_get_timestamp_in_ms(), ph, "is sleeping");
 	ft_my_usleep(ft_get_timestamp_in_ms(), ph->args->val_time_to_sleep);
+	// usleep(ph->args->val_time_to_sleep * 1000);
 }
 
 void	ft_think(t_philo *ph)

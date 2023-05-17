@@ -6,7 +6,7 @@
 /*   By: khbouych <khbouych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:00:07 by khbouych          #+#    #+#             */
-/*   Updated: 2023/05/08 18:00:34 by khbouych         ###   ########.fr       */
+/*   Updated: 2023/05/17 15:44:24 by khbouych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ t_philo	*ft_addnew(t_philo_rules *rules)
 		return (0);
 	new->args = rules;
 	new->nbr_eat = 0;
-	new->args->is_dead = 0;
 	new->last_eat = 0;
 	new->next = NULL;
 	return (new);
